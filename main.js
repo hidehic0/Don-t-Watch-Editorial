@@ -9,14 +9,13 @@
 // @author hidehic0
 // ==/UserScript==
 
-// XPathを使って要素を取得
-const xpath = "/html/body/div[5]/div[2]/div[1]/div[2]";
-const result = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+// querySelectorで要素を取得
+const element = document.querySelector("div.col-sm-12:nth-child(2)");
 
-// 要素が見つかった場合
-if (result.singleNodeValue) {
-  const element = result.singleNodeValue;
-
-  // 中身を削除して新しい内容に書き換え
-  element.innerHTML = "<h1 style="color: red">解説見るな</h1>";
-} 
+// 要素が見つかった場合、内容を変更
+if (element) {
+  element.innerHTML = "<h1>解説見ないで頑張ろう</h1>";
+  element.style.color = "#ff0000";
+} else {
+  console.log("指定した要素が見つかりませんでした");
+}
